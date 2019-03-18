@@ -9,7 +9,7 @@ package ananum.calculnumerique;
  *
  * @author Rufus
  */
-public class EDSolver {
+public class EDSolver implements Solver{
 	@Override
 	public Function solve(Function f, int n, double a, double b) {
 		Double[] values = f.f(n);

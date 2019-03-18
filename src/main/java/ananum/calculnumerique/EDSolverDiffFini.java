@@ -9,6 +9,6 @@ package ananum.calculnumerique;
  *
  * @author Rufus
  */
-public class EDSolverDiffFini {
-	
+public class EDSolverDiffFini extends EDSolver{
+		
 }
