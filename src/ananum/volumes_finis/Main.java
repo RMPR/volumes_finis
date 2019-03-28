@@ -10,5 +10,7 @@ package ananum.volumes_finis;
  * @author Rufus
  */
 public class Main {
-		
+	public static void main(String[] args) {
+        System.out.println("==>");
+    }
 }
