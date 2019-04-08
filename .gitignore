@@ -3,3 +3,7 @@ target
 .classpath
 .project
 .vscode
+/build/
+build.xml
+manifest.mf
+nbproject/
