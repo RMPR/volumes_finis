@@ -10,5 +10,7 @@ package ananum.calculnumerique;
  * @author Rufus
  */
 public interface Solver {
-    public Function solve(Function f, int n, double a, double b);	
+    public Function solve(Function f, int n, double a, double b);
+    
 }
+
