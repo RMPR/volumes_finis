@@ -9,9 +9,9 @@ package ananum.calculnumerique;
  *
  * @author Rufus
  */
-public class EDSolver implements Solver{
+public abstract class EDSolver implements Solver{
 	@Override
-	public Function solve(Function f, int n, double a, double b) {
+	public Function solve(Function f, int n,double c, double a, double b){
 		Double[] values = f.f(n);
 
 		double pas = values[1] - values[0];
