@@ -5,10 +5,12 @@
  */
 package ananum.calculnumerique;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rufus
  */
 public interface Function {
-    public Double[] f(int n);
+    public ArrayList<Double> f(int n);
 }

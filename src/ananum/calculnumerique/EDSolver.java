@@ -5,16 +5,18 @@
  */
 package ananum.calculnumerique;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rufus
  */
-public class EDSolver implements Solver{
+public abstract class EDSolver implements Solver{
 	@Override
-	public Function solve(Function f, int n, double a, double b) {
-		Double[] values = f.f(n);
+	public Function solve(Function f, int n,double c, double a, double b){
+		ArrayList<Double> values = f.f(n);
 
-		double pas = values[1] - values[0];
+		double pas = values.get(1) - values.get(0);
 		return null;
 	}	
 }

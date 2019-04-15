@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ananum.calculnumerique;
+package com.mdalsoft.test;
+
+import java.util.Map;
 
 /**
  *
- * @author Rufus
+ * @author ibrahim
  */
-public interface Solver {
-    public Function solve(Function f, int n,double c, double a, double b);
+public interface Testable {
+ public void test(Map testParams);
+    
 }
-
