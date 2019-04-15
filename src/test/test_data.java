@@ -17,7 +17,7 @@ public class test_data {
 
     private Function RA;
     private int n;
-    private String scenario;
+    public String scenario;
     Function fonctionATester;
     double tol=10e-8;
     private double a;
