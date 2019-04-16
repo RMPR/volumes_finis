@@ -39,7 +39,7 @@ public class TestLoggerDifferenceFinie1D {
         String methodToTest = "TestLoggerDifferenceFinie1D.main";
         String testFileLogger = "com.mdalsoft.test.FileTestLogger";
         try {
-            parTest.put("class to test", classeATester);
+            parTest.put("class_to_test", classeATester);
             parTest.put("teststarttime", "" + startTime);
             parTest.put("testreference", methodToTest);
             parTest.put("testLogger0", testFileLogger);
@@ -65,7 +65,7 @@ public class TestLoggerDifferenceFinie1D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", new Throwable() 
+        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -94,7 +94,7 @@ public class TestLoggerDifferenceFinie1D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", new Throwable() 
+        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);

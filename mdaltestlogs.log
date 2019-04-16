@@ -77,3 +77,15 @@
 ---;---;test_cas_f1_n2;1555347336326;-1;start;---;---;1555347336326;
 ---;---;test_cas_f1_n2;1555347336326;0;end;false;1555347336326;1555347336326;
 ---;---;TestLoggerDifferenceFinie1D.main;1555347336317;10;end;false;1555347336327;1555347336317;
+---;---;TestLoggerDifferenceFinie1D.main;1555351990743;-1;start;---;---;1555351990743;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1555351990757;-1;start;---;---;1555351990757;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1555351990757;10;end;true;1555351990767;1555351990757;
+---;---;TestLoggerDifferenceFinie1D.test_cas_f1_n2;1555351990775;-1;start;---;---;1555351990775;
+---;---;TestLoggerDifferenceFinie1D.test_cas_f1_n2;1555351990775;0;end;false;1555351990775;1555351990775;
+---;---;TestLoggerDifferenceFinie1D.main;1555351990743;33;end;false;1555351990776;1555351990743;
+---;---;TestLoggerDifferenceFinie1D.main;1555352011400;-1;start;---;---;1555352011400;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1555352011404;-1;start;---;---;1555352011404;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1555352011404;4;end;true;1555352011408;1555352011404;
+---;---;TestLoggerDifferenceFinie1D.test_cas_f1_n2;1555352011411;-1;start;---;---;1555352011411;
+---;---;TestLoggerDifferenceFinie1D.test_cas_f1_n2;1555352011411;1;end;false;1555352011412;1555352011411;
+---;---;TestLoggerDifferenceFinie1D.main;1555352011400;12;end;false;1555352011412;1555352011400;
