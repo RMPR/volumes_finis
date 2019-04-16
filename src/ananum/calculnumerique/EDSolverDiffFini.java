@@ -17,17 +17,23 @@ public class EDSolverDiffFini extends EDSolver{
      * @param b f(x_N+1) = b
      */
     public Function solve(Function f, int n,double c, double a, double b){
+        if(n==0){
+            return null;
+        }
         double h = 1/n;
         double w;
         ArrayList<Double> B = new ArrayList<Double>(n);
-        ArrayList<Double> A = new ArrayList<Double>(n-1);
-        ArrayList<Double> C = new ArrayList<Double>(n-1);
-        ArrayList<Double> D = new ArrayList<Double>(n);
+        ArrayList<Double> A = new ArrayList<Double>(n);
+        ArrayList<Double> C = new ArrayList<Double>(n);
+        ArrayList<Double> D = new ArrayList<Double>();
         ArrayList<Double> X = new ArrayList<Double>(n);
-
-        for (int i=0; i<n-1; i++){
-            A.add(-1.0);
-            B.add(2+c*Math.pow(h,2));
+        for (int i = 0; i < n; i++) {
+            D.add(0.);
+            X.add(0.0);
+        }
+        for (int i=0; i<n; i++){
+            B.add(-1.0);
+            A.add(2+c*Math.pow(h,2));
             C.add(-1.0);
         }
         for(int i=1; i<n; i++){
