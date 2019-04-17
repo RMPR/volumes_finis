@@ -50,7 +50,7 @@ public class EDSolverDiffFini extends EDSolver{
         for(int i=n-2; i>=0; i--){
             X.set(i, C.get(i) * X.get(i+1)/B.get(i));
         }
-        System.out.println(X);
+        
         return new Function() {
             @Override
             public ArrayList<Double> f(int n) {

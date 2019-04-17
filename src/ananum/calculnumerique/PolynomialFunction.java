@@ -29,9 +29,18 @@ public class PolynomialFunction implements Function {
     @Override
     public ArrayList<Double> f(int n) {
         ArrayList<Double> res = new ArrayList<>();
-        double pas = (a+b)/(n+1);
+        if (n < 2){
+            double r = 0.;
+            double x = (a+b)/2;
+            for(int j=0; j<coef.length; j++){
+                r += coef[j] * Math.pow(x, j);
+            }
+            res.add(r);
+            return res;
+        }
+        double pas = (b-a)/(n-1);
         for(int i=0; i<n; i++){
-            double tmp = a + (i+1)*pas;
+            double tmp = a + i*pas;
             double r = 0.;
             for(int j=0; j<coef.length; j++){
                 r += coef[j] * Math.pow(tmp, j);

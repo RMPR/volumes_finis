@@ -103,10 +103,10 @@ public class TestLoggerDifferenceFinie1D {
         
         try{
             EDSolver sd = new EDSolverDiffFini();
-            double a = 0.0;
-            double b = 0.0;
+            double a = 1.0;
+            double b = 2.0;
             Function f = new ConstantFunction(1);
-            Function RA = new PolynomialFunction(new double[]{1., 0.5, 0.5});
+            Function RA = new PolynomialFunction(new double[]{-1., -0.5, -0.5});
             test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, a, b, 0);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
