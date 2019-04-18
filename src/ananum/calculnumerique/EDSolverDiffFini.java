@@ -11,7 +11,7 @@ public class EDSolverDiffFini extends EDSolver{
     /**
      * Method solving -u''+ cu = f
      * @param f the function returned
-     * @param n the number of points in the mesh
+     * @param n the number of meshes
      * @param c the value of the function c (0 by default)
      * @param a f(x_0) = a
      * @param b f(x_N+1) = b
