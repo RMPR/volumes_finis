@@ -10,30 +10,46 @@ package ananum.matrice;
  * @author nivekiba
  */
 public abstract class Matrice implements IMatrice {
-    
+
     @Override
-    public Double[] produit(Double[] v){
+    public Double[] produit(Double[] v) {
         Double[] res = new Double[v.length];
-        
-        for(int i=0; i<v.length; i++){
+
+        for (int i = 0; i < v.length; i++) {
             res[i] = 0.;
-            for(int j=0; j<v.length; j++){
-                res[i] += v[j]*this.get(i, j);
+            for (int j = 0; j < v.length; j++) {
+                res[i] += v[j] * this.get(i, j);
             }
         }
-        
+
         return res;
     }
-    
-    public static double norme(Double[] v){
+
+    public static double norme(Double[] v) {
         double r = 0.;
-        for(int i=0; i<v.length; i++) r += v[i]*v[i];
+        for (int i = 0; i < v.length; i++) {
+            r += v[i] * v[i];
+        }
         return Math.sqrt(r);
     }
-    
-    public static double dist(Double[] a, Double[] b){
+
+    public static double dist(Double[] a, Double[] b) {
         double r = 0.;
-        for(int i=0; i<a.length; i++) r += (a[i]-b[i])*(a[i]-b[i]);
+        for (int i = 0; i < a.length; i++) {
+            r += (a[i] - b[i]) * (a[i] - b[i]);
+        }
         return Math.sqrt(r);
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+        for (int i = 0; i < rows(); i++) {
+            for (int j = 0; j < cols(); j++) {
+                str += "  " + get(i, j);
+            }
+            str +="\n";
+        }
+        return str;
     }
 }
