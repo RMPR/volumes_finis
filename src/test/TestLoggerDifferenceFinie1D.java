@@ -9,6 +9,7 @@ import ananum.calculnumerique.ConstantFunction;
 import ananum.calculnumerique.EDSolver;
 import ananum.calculnumerique.EDSolverDiffFini;
 import ananum.calculnumerique.Function;
+import ananum.calculnumerique.PolynomialFunction;
 
 import static com.mdalsoft.test.DefaultTestLogger.logTest;
 import example.test_data;
@@ -47,7 +48,7 @@ public class TestLoggerDifferenceFinie1D {
 
             TestLoggerDifferenceFinie1D cas = new TestLoggerDifferenceFinie1D();
             boolean res = cas.test_cas_fNulle_n100();
-            res = res && cas.test_cas_f1_n2();
+            res = res && cas.test_cas_f1_n200();
             parTest.put("testresult", res);
             System.out.println("Result: "+res);
         } catch (Throwable exx) {
@@ -76,7 +77,7 @@ public class TestLoggerDifferenceFinie1D {
 
             Function f = new ConstantFunction(0);
             Function RA = new ConstantFunction(0);
-            test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 1, 2, 0);
+            test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 0, 0, 0);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());
@@ -90,7 +91,7 @@ public class TestLoggerDifferenceFinie1D {
         }
     }
     
-    private boolean test_cas_f1_n2() throws Exception {
+    private boolean test_cas_f1_n200() throws Exception {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
@@ -102,10 +103,11 @@ public class TestLoggerDifferenceFinie1D {
         
         try{
             EDSolver sd = new EDSolverDiffFini();
-
+            double a = 1.0;
+            double b = 2.0;
             Function f = new ConstantFunction(1);
-            Function RA = new ConstantFunction(1);
-            test_data data = new test_data(sd, f, RA, "f=0 n=2", 2, 1, 2, 0);
+            Function RA = new PolynomialFunction(new double[]{-1., -0.5, -0.5});
+            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, a, b, 0);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());

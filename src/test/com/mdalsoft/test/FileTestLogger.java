@@ -42,7 +42,7 @@ public class FileTestLogger extends DefaultTestLogger implements TestLogger{
             Boolean bool=(Boolean) parTest.get(testresult);
             sb.append(bool==null?"---":bool.toString()).append(";");
             Throwable th=(Throwable) parTest.get(testerror);
-            if(th!=null) temp=th.getMessage();
+            if(th!=null) temp=th.getClass().getSimpleName()+":"+th.getMessage();
             sb.append(temp==null?"---":temp).append(";");
             temp=(String) parTest.get(teststarttime);
             sb.append(temp==null?"---":temp).append(";");

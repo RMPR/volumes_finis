@@ -20,9 +20,11 @@ public class EquationSolver {
     public static Double[] solve(Matrice A, Double[] b){
         double eps = 1e-10;
         Double[] x = new Double[b.length];
+
         for(int i=0; i<b.length; i++)
             x[i] = 0.;
         x[0] = b[0];
+
         do {
             for(int i=0; i<A.rows(); i++){
                 if(A.get(i, i) != 0){

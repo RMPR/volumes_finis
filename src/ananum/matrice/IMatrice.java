@@ -10,6 +10,7 @@ package ananum.matrice;
  * @author nivekiba
  */
 public interface IMatrice {
+    
     public void set(int i, int j, double x);
     public double get(int i, int j);
     
