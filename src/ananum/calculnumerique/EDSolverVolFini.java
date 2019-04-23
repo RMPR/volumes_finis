@@ -5,14 +5,14 @@
  */
 package ananum.calculnumerique;
 
-import ananum.matrice.EquationSolver;
-import ananum.matrice.Matrice;
+import ananum.EquationSolver.EquationSolver;
+import ananum.EquationSolver.EquationSolver3D;
 import ananum.matrice.MatriceCRS;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
  * @author Rufus
  */
 public class EDSolverVolFini extends EDSolver {
@@ -21,7 +21,7 @@ public class EDSolverVolFini extends EDSolver {
      * Resolution de l'equation -u'' + cu = f par la methode des volumes finis
      *
      * @param f second membre de l'equation
-     * @param n nombre de volume de controle
+     * @param n nombre de maillles
      * @param c poid de la fonction inconnue dans l'equation
      * @param a valeur de la fonction inconnue en 0
      * @param b valeur de la fonction inconnue en 1
@@ -42,7 +42,7 @@ public class EDSolverVolFini extends EDSolver {
 
             //initialisation de la partie de droite du systeme
             Double[] val_f = new Double[n];
-            ArrayList<Double> tab = f.f(n);
+            ArrayList<Double> tab = f.f(n + 1);
             val_f[0] = (1 / 2 * n) * (tab.get(1) + tab.get(0)) + (n - c / (2 * n)) * a + n * b;
 
         } else {
@@ -63,13 +63,13 @@ public class EDSolverVolFini extends EDSolver {
         }
         //initialisation de la partie de droite du systeme
         Double[] val_f = new Double[n];
-        ArrayList<Double> tab = f.f(n);
+        ArrayList<Double> tab = f.f(n + 1);
         for (int i = 0; i < n; i++) {
             val_f[i] = (1 / 2 * n) * (tab.get(i + 1) + tab.get(i));
         }
         val_f[0] += (n - c / (2 * n)) * a;
         val_f[n - 1] += n * b;
-        Double[] res = EquationSolver.solve(mat, val_f);
+        Double[] res = EquationSolver3D.solve(mat, val_f);
         return (int n1) -> {
             ArrayList<Double> list = new ArrayList<>();
             list.addAll(Arrays.asList(res));

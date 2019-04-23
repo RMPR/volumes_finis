@@ -6,7 +6,6 @@
 package ananum.matrice;
 
 /**
- *
  * @author nivekiba
  */
 public abstract class Matrice implements IMatrice {
@@ -48,7 +47,7 @@ public abstract class Matrice implements IMatrice {
             for (int j = 0; j < cols(); j++) {
                 str += "  " + get(i, j);
             }
-            str +="\n";
+            str += "\n";
         }
         return str;
     }
