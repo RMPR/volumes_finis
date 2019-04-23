@@ -38,41 +38,43 @@ public class EDSolverVolFini extends EDSolver {
         if (n == 1) {
             //initialisation de la matrice
             //premiere ligne
-            mat.set(0, 0, 2 * n + c / (2 * n));
+            mat.set(0, 0, 2 * n + c / (2. * n));
 
             //initialisation de la partie de droite du systeme
             Double[] val_f = new Double[n];
-            ArrayList<Double> tab = f.f(n);
-            val_f[0] = (1 / 2 * n) * (tab.get(1) + tab.get(0)) + (n - c / (2 * n)) * a + n * b;
+            ArrayList<Double> tab = f.f(n+1);
+            val_f[0] = (1 / 2 * n) * (tab.get(1) + tab.get(0)) + (n - c / (2. * n)) * a + n * b;
 
         } else {
             //initialisation de la matrice
             //premiere ligne
-            mat.set(0, 0, 2 * n + c / (2 * n));
+            mat.set(0, 0, 2 * n + c / (2. * n));
             mat.set(0, 1, -n);
 
             //derniere ligne
-            mat.set(n - 1, n - 1, 2 * n + c / (2 * n));
-            mat.set(n - 1, n - 2, -n + c / (2 * n));
+            mat.set(n - 1, n - 1, 2 * n + c / (2. * n));
+            mat.set(n - 1, n - 2, -n + c / (2. * n));
 
             for (int i = 1; i < n - 1; i++) {
-                mat.set(i, i, 2 * n + c / (2 * n));
+                mat.set(i, i, 2 * n + c / (2. * n));
                 mat.set(i, i + 1, -n);
-                mat.set(i, i - 1, -n + c / (2 * n));
+                mat.set(i, i - 1, -n + c / (2. * n));
             }
         }
         //initialisation de la partie de droite du systeme
         Double[] val_f = new Double[n];
         ArrayList<Double> tab = f.f(n+1);
         for (int i = 0; i < n; i++) {
-            val_f[i] = (1 / 2 * n) * (tab.get(i + 1) + tab.get(i));
+            val_f[i] = (1 / 2. * n) * (tab.get(i + 1) + tab.get(i));
         }
-        val_f[0] += (n - c / (2 * n)) * a + tab.get(0);
+        val_f[0] += (n - c / (2. * n)) * a + tab.get(0);
         val_f[n - 1] += n * b + tab.get(n);
         Double[] res = EquationSolver.solve(mat, val_f);
         return (int n1) -> {
             ArrayList<Double> list = new ArrayList<>();
+            list.add(a);
             list.addAll(Arrays.asList(res));
+            list.add(b);
             return list;
         };
     }

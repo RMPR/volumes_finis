@@ -48,8 +48,8 @@ public class TestLoggerVolumeFini1D {
             logTest(parTest, "start", false);
 
             TestLoggerVolumeFini1D cas = new TestLoggerVolumeFini1D();
-            boolean res = cas.test_cas_fNulle_n100();
-            res = res && cas.test_cas_f1_n200();
+            boolean res = cas.test_cas_f_0_n100();
+            res = res && cas.test_cas_f_1_n200();
             parTest.put("testresult", res);
             System.out.println("Result: "+res);
         } catch (Throwable exx) {
@@ -63,22 +63,23 @@ public class TestLoggerVolumeFini1D {
 
     }
 
-    private boolean test_cas_fNulle_n100() throws Exception {
+    private boolean test_cas_f_1_n200() throws Exception {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerVolumeFini1D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
         logTest(parTest, "start", false);
         
         try{
-            EDSolver sd = new EDSolverDiffFini();
-
-            Function f = new ConstantFunction(0);
-            Function RA = new ConstantFunction(0);
-            test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 0, 0, 0);
+            EDSolver sd = new EDSolverVolFini();
+            double a = 1.0;
+            double b = 2.0;
+            Function f = new ConstantFunction(1);
+            Function RA = new PolynomialFunction(new double[]{1., 1.5, -0.5}, 0., 1.);
+            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, 0.0, a, b);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());
@@ -92,11 +93,11 @@ public class TestLoggerVolumeFini1D {
         }
     }
     
-    private boolean test_cas_f1_n200() throws Exception {
+    private boolean test_cas_f_0_n100() throws Exception {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerVolumeFini1D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -106,10 +107,39 @@ public class TestLoggerVolumeFini1D {
             EDSolver sd = new EDSolverVolFini();
             double a = 1.0;
             double b = 2.0;
-            Function f = new ConstantFunction(1);
-            Function RA = new PolynomialFunction(new double[]{1., 0.5, 0.5});
-            
-            test_data data = new test_data(sd, f, RA, "f=1 n=200", 50, a, b, 0);
+            Function f = new ConstantFunction(0.0);
+            Function RA = new PolynomialFunction(new double[]{1., 1.}, 0., 1.);
+            test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 0.0, a, b);
+
+            parTest.put("testendtime", "" + System.currentTimeMillis());
+            parTest.put("testresult", data.oracle());
+            logTest(parTest, "end", false);
+            return data.oracle();
+        } catch (Throwable exx) {
+            exx.printStackTrace();
+            parTest.put("testresult", false);
+            parTest.put("testerror", exx);
+            return false;
+        }
+    }
+    
+    private boolean test_cas_f_3_n0() throws Exception {
+        long startTime = System.currentTimeMillis();
+        Map parTest = new HashMap();
+        parTest.put("teststarttime", "" + startTime);
+        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
+                                      .getStackTrace()[0] 
+                                      .getMethodName());
+        parTest.put("testLogger0", testFileLogger);
+        logTest(parTest, "start", false);
+        
+        try{
+            EDSolver sd = new EDSolverVolFini();
+            double a = 1.0;
+            double b = 2.0;
+            Function f = new ConstantFunction(3.0);
+            Function RA = new PolynomialFunction(new double[]{1., 1.}, 0., 1.);
+            test_data data = new test_data(sd, f, RA, "f=3 n=0", 0, 0.0, a, b);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());
