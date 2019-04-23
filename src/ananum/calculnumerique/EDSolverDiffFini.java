@@ -2,6 +2,8 @@ package ananum.calculnumerique;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.pow;
+
 /**
  *
  * @author Rufus
@@ -32,7 +34,7 @@ public class EDSolverDiffFini extends EDSolver{
             };
         }
         int N = n+1;
-        double h = 1/n;
+        double h = 1/(double)n;
         double w;
         ArrayList<Double> B = new ArrayList<Double>(n-1);
         ArrayList<Double> A = new ArrayList<Double>(n-1);
@@ -41,12 +43,16 @@ public class EDSolverDiffFini extends EDSolver{
         ArrayList<Double> X = new ArrayList<Double>(n-1);
         ArrayList<Double> U = new ArrayList<Double>(N);
         U.add(a);
+        /* Construction of D */
         for (int i = 0; i < n-1; i++) {
             X.add(0.0);
+            D.set(i, pow(h, 2)*D.get(i));
         }
+        D.set(0, D.get(0)+a);
+        D.set(n-2, D.get(n-2)+b);
         for (int i=0; i<n-1; i++){
             B.add(-1.0);
-            A.add(2+c*Math.pow(h,2));
+            A.add(2+c* pow(h,2));
             C.add(-1.0);
         }
         for(int i=1; i<n-1; i++){
@@ -55,11 +61,17 @@ public class EDSolverDiffFini extends EDSolver{
             D.set(i, D.get(i) - w*D.get(i-1));
         }
         X.set(n-2, D.get(n-2)/B.get(n-2));
+        System.out.println(""+X);
+        System.out.println(""+A);
+        System.out.println(""+B);
+        System.out.println(""+C);
+        System.out.println(""+D);
         for(int i=n-3; i>=0; i--){
             X.set(i, D.get(i) - C.get(i) * X.get(i+1)/B.get(i));
         }
         U.addAll(X);
         U.add(b);
+        System.out.println(""+U);
         return new Function() {
             @Override
             public ArrayList<Double> f(int n) {

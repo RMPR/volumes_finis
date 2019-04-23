@@ -168,3 +168,12 @@
 ---;---;TestLoggerDifferenceFinie1D.main;1555871941647;-1;start;---;---;1555871941647;
 ---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1555871941650;-1;start;---;---;1555871941650;
 ---;---;TestLoggerDifferenceFinie1D.main;1555871941647;12;end;false;1555871941659;1555871941647;
+---;---;TestLoggerDifferenceFinie1D.main;1556008274198;-1;start;---;---;1556008274198;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1556008274245;-1;start;---;---;1556008274245;
+---;---;TestLoggerDifferenceFinie1D.main;1556008274198;67;end;false;1556008274265;1556008274198;
+---;---;TestLoggerDifferenceFinie1D.main;1556009711625;-1;start;---;---;1556009711625;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1556009711637;-1;start;---;---;1556009711637;
+---;---;TestLoggerDifferenceFinie1D.main;1556009711625;33;end;false;1556009711658;1556009711625;
+---;---;TestLoggerDifferenceFinie1D.main;1556010123801;-1;start;---;---;1556010123801;
+---;---;TestLoggerDifferenceFinie1D.test_cas_fNulle_n100;1556010123804;-1;start;---;---;1556010123804;
+---;---;TestLoggerDifferenceFinie1D.main;1556010123801;19;end;false;1556010123820;1556010123801;
