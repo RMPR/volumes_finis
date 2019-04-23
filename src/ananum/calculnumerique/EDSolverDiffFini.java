@@ -59,10 +59,12 @@ public class EDSolverDiffFini extends EDSolver{
         D.set(0, D.get(0)+a);
         D.set(n-2, D.get(n-2)+b);
         for (int i=0; i<n-1; i++){
-            B.add(-1.0);
-            A.add(2+c* pow(h,2));
+            A.add(-1.0);
+            B.add(2+c* pow(h,2));
             C.add(-1.0);
         }
+        A.set(0, 0.0);
+        C.set(n-2, 0.0);
         for(int i=1; i<n-1; i++){
             w = A.get(i) / B.get(i-1);
             B.set(i, B.get(i) - (w*C.get(i-1))) ;

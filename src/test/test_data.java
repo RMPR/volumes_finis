@@ -6,6 +6,7 @@
 package example;
 import ananum.calculnumerique.EDSolver;
 import ananum.calculnumerique.Function;
+import ananum.matrice.Matrice;
 import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 
@@ -19,13 +20,13 @@ public class test_data {
     private int n;
     public String scenario;
     Function fonctionATester;
-    double tol=10e-8;
+    double tol=10e-7;
     private double a;
     private double b;
     private double c;
     private EDSolver solver;
     
-    public test_data(EDSolver s, Function f, Function RA, String scenario,  int n, double a, double b, double c){
+    public test_data(EDSolver s, Function f, Function RA, String scenario,  int n, double c, double a, double b){
         this.fonctionATester=f;
         this.RA=RA;
         this.scenario = scenario;
@@ -37,31 +38,28 @@ public class test_data {
     }
     public double mesure(Function V1, Function V2){
         // Cette methode calcule la mesure algébrique de l'érreur absolue ou relative
+        //double err = Matrice.dist(sol, g.f(201));
+        //System.out.println("===> "+ (err/Matrice.norme(g.f(201))) );
         double mes=0.0;
         double abs=0.0;
-        ArrayList<Double> v1 = V1.f(n);
-        ArrayList<Double> v2 = V2.f(n);
-        for (int i=0; i<v1.size();i++){
-            abs+= v1.get(i)*v2.get(i);
-            double tmp=v1.get(i)-v2.get(i);
-            mes+=tmp*tmp;   
-        }
-        if (abs==0.0)
+        ArrayList<Double> v1 = V1.f(n+1);
+        ArrayList<Double> v2 = V2.f(n+1);
+        
+        mes = Matrice.dist(v1, v2);
+        abs = Matrice.norme(v2);
+        
+        if (abs <= tol)
             return sqrt(mes);
         else
             return sqrt(mes/abs);
     }
     public boolean oracle(){
         if (n<=0){
-            if (solver.solve(this.fonctionATester, this.n, this.c, this.a, this.b)==null)
-                return true;
-            else
-                return false;
+            return solver.solve(this.fonctionATester, this.n, this.c, this.a, this.b)==null;
         }else{
-            if(mesure(solver.solve(this.fonctionATester, this.n, this.c, this.b, this.a), RA)<tol)
-                return true;
-            else
-                return false;
+            double err = mesure(solver.solve(this.fonctionATester, this.n, this.c, this.a, this.b), RA);
+            System.out.println("==> "+err);
+            return err < tol;
         }
     }
     
