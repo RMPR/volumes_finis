@@ -20,7 +20,7 @@ public class ConstantFunction implements Function {
     
     @Override
     public ArrayList<Double> f(int n) {
-        ArrayList<Double> res = new ArrayList<>();
+        ArrayList<Double> res = new ArrayList<Double>();
         for(int i=0; i<n; i++) res.add(constant);
         return res;
     }

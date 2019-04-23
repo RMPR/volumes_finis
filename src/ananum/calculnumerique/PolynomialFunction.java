@@ -28,7 +28,7 @@ public class PolynomialFunction implements Function {
 
     @Override
     public ArrayList<Double> f(int n) {
-        ArrayList<Double> res = new ArrayList<>();
+        ArrayList<Double> res = new ArrayList<Double>();
         if (n < 2) {
             double r = 0.;
             double x = (a + b) / 2;

@@ -9,7 +9,7 @@ import static java.lang.Math.pow;
  * @author Rufus
  */
 public class EDSolverDiffFini extends EDSolver{
-    @Override
+
     /**
      * Method solving -u''+ cu = f
      * @param f the function returned
@@ -18,12 +18,13 @@ public class EDSolverDiffFini extends EDSolver{
      * @param a u(x_0) = a
      * @param b u(x_n-1+1) = b
      */
+    @Override
     public Function solve(Function f, int n,double c, double a, double b){
         if(n==0){
             return null;
         }
         if(n==1){
-            ArrayList<Double> U = new ArrayList<Double>(2);
+            final ArrayList<Double> U = new ArrayList<Double>(2);
             U.add(a);
             U.add(b);
             return new Function() {
@@ -41,7 +42,7 @@ public class EDSolverDiffFini extends EDSolver{
         ArrayList<Double> C = new ArrayList<Double>(n-1);
         ArrayList<Double> D = new ArrayList<Double>(n-1);
         ArrayList<Double> X = new ArrayList<Double>(n-1);
-        ArrayList<Double> U = new ArrayList<Double>(N);
+        final ArrayList<Double> U = new ArrayList<Double>(N);
         U.add(a);
         /* Construction of D */
         boolean flag = true;

@@ -16,8 +16,8 @@ public class MatriceCRS extends Matrice {
     protected int rows;
     protected int cols;
 
-    protected final ArrayList<Double> val = new ArrayList<>();
-    protected final ArrayList<Integer> col_index = new ArrayList<>();
+    protected final ArrayList<Double> val = new ArrayList<Double>();
+    protected final ArrayList<Integer> col_index = new ArrayList<Integer>();
     protected final Integer row_ptr[];
 
     public MatriceCRS(int rows, int cols) {
