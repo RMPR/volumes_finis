@@ -37,11 +37,10 @@ public class EDSolverDiffFini extends EDSolver{
         ArrayList<Double> B = new ArrayList<Double>(n-1);
         ArrayList<Double> A = new ArrayList<Double>(n-1);
         ArrayList<Double> C = new ArrayList<Double>(n-1);
-        ArrayList<Double> D = new ArrayList<Double>(n-1);
+        ArrayList<Double> D = f.f(n-1);
         ArrayList<Double> X = new ArrayList<Double>(n-1);
         ArrayList<Double> U = new ArrayList<Double>(N);
         U.add(a);
-        D = f.f(n-1);
         for (int i = 0; i < n-1; i++) {
             X.add(0.0);
         }
@@ -55,6 +54,7 @@ public class EDSolverDiffFini extends EDSolver{
             B.set(i, B.get(i) - w*C.get(i-1)) ;
             D.set(i, D.get(i) - w*D.get(i-1));
         }
+        X.set(n-2, D.get(n-2)/B.get(n-2));
         for(int i=n-3; i>=0; i--){
             X.set(i, D.get(i) - C.get(i) * X.get(i+1)/B.get(i));
         }
