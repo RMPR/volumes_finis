@@ -39,12 +39,20 @@ public class EDSolverDiffFini extends EDSolver{
         ArrayList<Double> B = new ArrayList<Double>(n-1);
         ArrayList<Double> A = new ArrayList<Double>(n-1);
         ArrayList<Double> C = new ArrayList<Double>(n-1);
-        ArrayList<Double> D = f.f(n-1);
+        ArrayList<Double> D = new ArrayList<Double>(n-1);
         ArrayList<Double> X = new ArrayList<Double>(n-1);
         ArrayList<Double> U = new ArrayList<Double>(N);
         U.add(a);
         /* Construction of D */
-        for (int i = 0; i < n-1; i++) {
+        boolean flag = true;
+        for(double element : f.f(n)){
+           if(flag){
+               flag = false;
+               continue;
+            }
+           D.add(element);
+        }
+        for (int i=0; i<n-1; i++) {
             X.add(0.0);
             D.set(i, pow(h, 2)*D.get(i));
         }
@@ -57,8 +65,8 @@ public class EDSolverDiffFini extends EDSolver{
         }
         for(int i=1; i<n-1; i++){
             w = A.get(i) / B.get(i-1);
-            B.set(i, B.get(i) - w*C.get(i-1)) ;
-            D.set(i, D.get(i) - w*D.get(i-1));
+            B.set(i, B.get(i) - (w*C.get(i-1))) ;
+            D.set(i, D.get(i) - (w*D.get(i-1)));
         }
         X.set(n-2, D.get(n-2)/B.get(n-2));
         System.out.println(""+X);
@@ -67,7 +75,7 @@ public class EDSolverDiffFini extends EDSolver{
         System.out.println(""+C);
         System.out.println(""+D);
         for(int i=n-3; i>=0; i--){
-            X.set(i, D.get(i) - C.get(i) * X.get(i+1)/B.get(i));
+            X.set(i, (D.get(i) - (C.get(i) * X.get(i+1)))/B.get(i));
         }
         U.addAll(X);
         U.add(b);
