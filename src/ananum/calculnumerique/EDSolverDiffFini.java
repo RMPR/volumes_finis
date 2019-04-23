@@ -41,9 +41,9 @@ public class EDSolverDiffFini extends EDSolver{
         ArrayList<Double> X = new ArrayList<Double>(n-1);
         ArrayList<Double> U = new ArrayList<Double>(N);
         U.add(a);
+        D = f.f(n-1);
         for (int i = 0; i < n-1; i++) {
             X.add(0.0);
-            D = f.f(n-1);
         }
         for (int i=0; i<n-1; i++){
             B.add(-1.0);
