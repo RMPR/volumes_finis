@@ -25,6 +25,7 @@ public class PolynomialFunction implements Function {
     public PolynomialFunction(double[] coef){
         this(coef, 0, 1);
     }
+    
 
     @Override
     public ArrayList<Double> f(int n) {

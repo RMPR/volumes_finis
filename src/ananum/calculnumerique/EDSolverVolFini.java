@@ -63,12 +63,12 @@ public class EDSolverVolFini extends EDSolver {
         }
         //initialisation de la partie de droite du systeme
         Double[] val_f = new Double[n];
-        ArrayList<Double> tab = f.f(n);
+        ArrayList<Double> tab = f.f(n+1);
         for (int i = 0; i < n; i++) {
             val_f[i] = (1 / 2 * n) * (tab.get(i + 1) + tab.get(i));
         }
-        val_f[0] += (n - c / (2 * n)) * a;
-        val_f[n - 1] += n * b;
+        val_f[0] += (n - c / (2 * n)) * a + tab.get(0);
+        val_f[n - 1] += n * b + tab.get(n);
         Double[] res = EquationSolver.solve(mat, val_f);
         return (int n1) -> {
             ArrayList<Double> list = new ArrayList<>();
