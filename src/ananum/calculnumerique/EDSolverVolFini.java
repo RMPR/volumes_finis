@@ -5,6 +5,7 @@
  */
 package ananum.calculnumerique;
 
+import ananum.EquationSolver.EquationSolver3D;
 import ananum.matrice.EquationSolver;
 import ananum.matrice.Matrice;
 import ananum.matrice.MatriceCRS;
@@ -42,7 +43,7 @@ public class EDSolverVolFini extends EDSolver {
 
             //initialisation de la partie de droite du systeme
             Double[] val_f = new Double[n];
-            ArrayList<Double> tab = f.f(n);
+            ArrayList<Double> tab = f.f(n+1);
             val_f[0] = (1 / 2 * n) * (tab.get(1) + tab.get(0)) + (n - c / (2 * n)) * a + n * b;
 
         } else {
@@ -63,13 +64,13 @@ public class EDSolverVolFini extends EDSolver {
         }
         //initialisation de la partie de droite du systeme
         Double[] val_f = new Double[n];
-        ArrayList<Double> tab = f.f(n);
+        ArrayList<Double> tab = f.f(n+1);
         for (int i = 0; i < n; i++) {
             val_f[i] = (1 / 2 * n) * (tab.get(i + 1) + tab.get(i));
         }
         val_f[0] += (n - c / (2 * n)) * a;
         val_f[n - 1] += n * b;
-        Double[] res = EquationSolver.solve(mat, val_f);
+        Double[] res = EquationSolver3D.solve(mat, val_f);
         return (int n1) -> {
             ArrayList<Double> list = new ArrayList<>();
             list.addAll(Arrays.asList(res));
