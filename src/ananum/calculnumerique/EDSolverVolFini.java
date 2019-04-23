@@ -5,7 +5,7 @@
  */
 package ananum.calculnumerique;
 
-import ananum.EquationSolver.EquationSolver3D;
+import ananum.solver.EquationSolver3D;
 import ananum.matrice.Matrice3DTL;
 
 import java.util.ArrayList;
