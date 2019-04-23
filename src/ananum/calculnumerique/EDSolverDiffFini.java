@@ -32,7 +32,7 @@ public class EDSolverDiffFini extends EDSolver{
             };
         }
         int N = n+1;
-        double h = 1/n;
+        double h = 1./n;
         double w;
         ArrayList<Double> B = new ArrayList<Double>(n-1);
         ArrayList<Double> A = new ArrayList<Double>(n-1);
@@ -60,6 +60,7 @@ public class EDSolverDiffFini extends EDSolver{
         }
         U.addAll(X);
         U.add(b);
+        
         return new Function() {
             @Override
             public ArrayList<Double> f(int n) {

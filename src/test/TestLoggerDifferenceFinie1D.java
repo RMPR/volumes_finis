@@ -107,7 +107,7 @@ public class TestLoggerDifferenceFinie1D {
             double b = 2.0;
             Function f = new ConstantFunction(1);
             Function RA = new PolynomialFunction(new double[]{-1., -0.5, -0.5});
-            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, a, b, 0);
+            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, 0.0, a, b);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());
