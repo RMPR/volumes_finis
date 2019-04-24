@@ -70,12 +70,13 @@ public class EDSolverVolFini extends EDSolver {
             val_f[0] += -m1 * a;
             val_f[n - 1] += -m1 * b;
         }
-
+        /*
         System.out.println(mat);
         for (int i = 0; i < n; i++) {
             System.out.println(val_f[i]);
         }
         System.out.println();
+        */
 
         final Double[] res = EquationSolver3D.solve(mat, val_f);
         return new Function() {
