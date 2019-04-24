@@ -25,5 +25,4 @@ public class ConstantFunction implements Function {
         return res;
     }
     
-    
 }

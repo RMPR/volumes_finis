@@ -8,7 +8,6 @@ package ananum.matrice;
 import java.util.ArrayList;
 
 /**
- *
  * @author jodel
  * les indices de la matrice commence a 0
  */
@@ -39,9 +38,9 @@ public class MatriceCRS extends Matrice {
             return;
         }
         //retrouve l'indice correspondant dans la liste val
-        int ind_val = index_col(j, row_ptr[i], row_ptr[i+1]);
+        int ind_val = index_col(j, row_ptr[i], row_ptr[i + 1]);
 
-        if (ind_val < row_ptr[i+1] && col_index.get(ind_val) == j) {
+        if (ind_val < row_ptr[i + 1] && col_index.get(ind_val) == j) {
             if (x == 0.0) {
                 remove(ind_val, i);
             } else {
@@ -59,7 +58,7 @@ public class MatriceCRS extends Matrice {
             return 0.0;
         }
 
-        for (int k = row_ptr[i]; k < row_ptr[i+1]; k++) {
+        for (int k = row_ptr[i]; k < row_ptr[i + 1]; k++) {
             if (col_index.get(k) == j) {
                 return val.get(k);
             }
@@ -80,7 +79,7 @@ public class MatriceCRS extends Matrice {
 
     protected int index_col(int j, int left, int right) {
         //s'il ya aucun element sur la ligne left-right = 0
-        if (right - left == 0 || j > col_index.get(right-1)) {
+        if (right - left == 0 || j > col_index.get(right - 1)) {
             return right;
         }
 
@@ -99,11 +98,11 @@ public class MatriceCRS extends Matrice {
     }
 
     public void etat() {
-        System.out.println("val "+val);
-        System.out.println("col_index "+col_index);
+        System.out.println("val " + val);
+        System.out.println("col_index " + col_index);
         System.out.print("row_ptr [");
         for (Integer elt : row_ptr) {
-            System.out.print(elt+" ");
+            System.out.print(elt + " ");
         }
         System.out.println("]");
     }
@@ -111,7 +110,7 @@ public class MatriceCRS extends Matrice {
     protected void remove(int k, int i) {
         val.remove(k);
         col_index.remove(k);
-        for (int ii = i+1; ii < rows + 1; ii++) {
+        for (int ii = i + 1; ii < rows + 1; ii++) {
             row_ptr[ii]--;
         }
     }
@@ -129,7 +128,7 @@ public class MatriceCRS extends Matrice {
             col_index.add(k, j);
         }
 
-        for (int ii = i+1; ii < rows + 1; ii++) {
+        for (int ii = i + 1; ii < rows + 1; ii++) {
             row_ptr[ii]++;
         }
     }

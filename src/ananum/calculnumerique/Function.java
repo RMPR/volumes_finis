@@ -8,7 +8,6 @@ package ananum.calculnumerique;
 import java.util.ArrayList;
 
 /**
- *
  * @author Rufus
  */
 public interface Function {

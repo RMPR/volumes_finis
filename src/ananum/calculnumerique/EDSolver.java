@@ -8,15 +8,14 @@ package ananum.calculnumerique;
 import java.util.ArrayList;
 
 /**
- *
  * @author Rufus
  */
-public abstract class EDSolver implements Solver{
-	@Override
-	public Function solve(Function f, int n,double c, double a, double b){
-		ArrayList<Double> values = f.f(n);
+public abstract class EDSolver implements Solver {
+    @Override
+    public Function solve(Function f, int n, double c, double a, double b) {
+        ArrayList<Double> values = f.f(n);
 
-		double pas = values.get(1) - values.get(0);
-		return null;
-	}	
+        double pas = values.get(1) - values.get(0);
+        return null;
+    }
 }

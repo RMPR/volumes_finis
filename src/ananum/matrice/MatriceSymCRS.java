@@ -6,10 +6,11 @@
 package ananum.matrice;
 
 /**
- *Represente la matrice just de facon triangulaire superieur
+ * Represente la matrice just de facon triangulaire superieur
+ *
  * @author jodel
  */
-public class MatriceSymCRS extends MatriceCRS{
+public class MatriceSymCRS extends MatriceCRS {
 
     public MatriceSymCRS(int rows, int cols) {
         super(rows, cols);
@@ -18,14 +19,14 @@ public class MatriceSymCRS extends MatriceCRS{
     @Override
     public double get(int i, int j) {
         int min = Math.min(i, j);
-        return super.get(min, j+i-min); //To change body of generated methods, choose Tools | Templates.
+        return super.get(min, j + i - min); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void set(int i, int j, double x) {
         int min = Math.min(i, j);
-        super.set(min, i+j-min, x); //To change body of generated methods, choose Tools | Templates.
+        super.set(min, i + j - min, x); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+
 }

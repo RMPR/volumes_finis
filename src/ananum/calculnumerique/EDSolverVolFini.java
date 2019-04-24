@@ -5,8 +5,8 @@
  */
 package ananum.calculnumerique;
 
-import ananum.matrice.EquationSolver;
-import ananum.matrice.Matrice;
+//import ananum.EquationSolver.EquationSolver3D;
+import ananum.equation.EquationSolver;
 import ananum.matrice.MatriceCRS;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,8 +67,8 @@ public class EDSolverVolFini extends EDSolver {
         for (int i = 0; i < n; i++) {
             val_f[i] = (1 / 2. * n) * (tab.get(i + 1) + tab.get(i));
         }
-        val_f[0] += (n - c / (2. * n)) * a + tab.get(0);
-        val_f[n - 1] += n * b + tab.get(n);
+        val_f[0] += (n - c / (2 * n)) * a;
+        val_f[n - 1] += n * b;
         Double[] res = EquationSolver.solve(mat, val_f);
         return (int n1) -> {
             ArrayList<Double> list = new ArrayList<>();
