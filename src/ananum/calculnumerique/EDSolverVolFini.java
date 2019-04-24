@@ -5,8 +5,6 @@
  */
 package ananum.calculnumerique;
 
-//import ananum.EquationSolver.EquationSolver3D;
-
 import ananum.matrice.Matrice3DTL;
 import ananum.solver.EquationSolver3D;
 
@@ -40,8 +38,8 @@ public class EDSolverVolFini extends EDSolver {
         final double a2 = 0.0;
         final double a3 = -0.774596669;
 
-        final double m1 = (-n + (5 * c) / (18 * n));
-        final double m0 = 2 * n + (4 * c) / (9 * n);
+        final double m1 = (-n + (5. * c) / (18. * n));
+        final double m0 = 2 * n + (4. * c) / (9. * n);
         //partie droite
         Double[] val_f = new Double[n];
 
@@ -51,7 +49,7 @@ public class EDSolverVolFini extends EDSolver {
             mat.setValeurDiag(0, m0);
 
             //initialisation de la partie de droite du systeme
-            val_f[0] = 0.5 * ((5 / 9) * f.apply(0.5 * a1 + 0.5) + (8 / 9) * f.apply(0.5 * a2 + 0.5) + (5 / 9) * f.apply(0.5 * a3 + 0.5))
+            val_f[0] = 0.5 * ((5. / 9) * f.apply(0.5 * a1 + 0.5) + (8. / 9) * f.apply(0.5 * a2 + 0.5) + (5. / 9) * f.apply(0.5 * a3 + 0.5))
                     - m1 * (a + b);
 
         } else {
@@ -63,9 +61,9 @@ public class EDSolverVolFini extends EDSolver {
             //initialisation de la partie de droite du systeme
             ArrayList<Double> tab = f.f(n + 1);
             for (int i = 0; i < n; i++) {
-                val_f[i] = (0.5 / n) * ((5 / 9) * f.apply((0.5 / n) * a1 + (0.5 * (2 * i + 1)) / n)
-                        + (8 / 9) * f.apply((0.5 / n) * a2 + (0.5 * (2 * i + 1)) / n)
-                        + (5 / 9) * f.apply((0.5 / n) * a3 + (0.5 * (2 * i + 1)) / n));
+                val_f[i] = (0.5 / n) * ((5. / 9) * f.apply((0.5 / n) * a1 + (0.5 * (2 * i + 1)) / n)
+                        + (8. / 9) * f.apply((0.5 / n) * a2 + (0.5 * (2 * i + 1)) / n)
+                        + (5. / 9) * f.apply((0.5 / n) * a3 + (0.5 * (2 * i + 1)) / n));
             }
             val_f[0] += -m1 * a;
             val_f[n - 1] += -m1 * b;
