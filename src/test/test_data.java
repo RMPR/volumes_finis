@@ -42,12 +42,11 @@ public class test_data {
         //System.out.println("===> "+ (err/Matrice.norme(g.f(201))) );
         double mes=0.0;
         double abs=0.0;
-        ArrayList<Double> v1 = V1.f(n+1);
-        ArrayList<Double> v2 = V2.f(n+1);
+        ArrayList<Double> v1 = V1.f(n);
+        ArrayList<Double> v2 = V2.f(v1.size());
         
         mes = Matrice.dist(v1, v2);
         abs = Matrice.norme(v2);
-        
         if (abs <= tol)
             return sqrt(mes);
         else

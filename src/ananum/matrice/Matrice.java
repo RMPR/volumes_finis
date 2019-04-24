@@ -31,7 +31,7 @@ public abstract class Matrice implements IMatrice {
         for (int i = 0; i < v.length; i++) {
             r += v[i] * v[i];
         }
-        return Math.sqrt(r);
+        return r;
     }
     
     public static double norme(ArrayList<Double> v) {
@@ -39,7 +39,7 @@ public abstract class Matrice implements IMatrice {
         for (int i = 0; i < v.size(); i++) {
             r += v.get(i) * v.get(i);
         }
-        return Math.sqrt(r);
+        return r;
     }
 
     public static double dist(Double[] a, Double[] b) {
@@ -47,7 +47,7 @@ public abstract class Matrice implements IMatrice {
         for (int i = 0; i < a.length; i++) {
             r += (a[i] - b[i]) * (a[i] - b[i]);
         }
-        return Math.sqrt(r);
+        return r;
     }
     
     public static double dist(ArrayList<Double> a, ArrayList<Double> b) {
@@ -55,7 +55,7 @@ public abstract class Matrice implements IMatrice {
         for (int i = 0; i < a.size(); i++) {
             r += (a.get(i) - b.get(i)) * (a.get(i) - b.get(i));
         }
-        return Math.sqrt(r);
+        return r;
     }
 
     @Override
