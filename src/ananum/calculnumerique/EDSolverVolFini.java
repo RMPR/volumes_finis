@@ -6,8 +6,10 @@
 package ananum.calculnumerique;
 
 //import ananum.EquationSolver.EquationSolver3D;
-import ananum.solver.EquationSolver3D;
+
 import ananum.matrice.Matrice3DTL;
+import ananum.solver.EquationSolver3D;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,46 +30,63 @@ public class EDSolverVolFini extends EDSolver {
      * point(2i+1/2n) i variant de 0 a n-1, si n < 1 la focntion retourne un pointeur null
      */
     @Override
-    public Function solve(Function f, int n, double c, double a, double b) {
+    public Function solve(Function f, int n, double c, final double a, final double b) {
 
         if (n < 1) {
             return null;
         }
         Matrice3DTL mat = new Matrice3DTL(n);
+        final double a1 = 0.774596669;
+        final double a2 = 0.0;
+        final double a3 = -0.774596669;
+
+        final double m1 = (-n + (5 * c) / (18 * n));
+        final double m0 = 2 * n + (4 * c) / (9 * n);
         //partie droite
         Double[] val_f = new Double[n];
 
         if (n == 1) {
             //initialisation de la matrice
             //premiere ligne
-            mat.setValeurDiag(0, 2 * n + c / (2 * n));
+            mat.setValeurDiag(0, m0);
 
             //initialisation de la partie de droite du systeme
-            ArrayList<Double> tab = f.f(n + 1);
-            val_f[0] = (1 / 2. ) * (tab.get(1) + tab.get(0)) + (1 - c / 2. ) * a + b;
+            val_f[0] = 0.5 * ((5 / 9) * f.apply(0.5 * a1 + 0.5) + (8 / 9) * f.apply(0.5 * a2 + 0.5) + (5 / 9) * f.apply(0.5 * a3 + 0.5))
+                    - m1 * (a + b);
 
         } else {
             //initialisation de la matrice
-            mat.setValeurDiag(0, 2 * n + c / (2 * n));
-            mat.setValeurDiag(1, -n);
-            mat.setValeurDiag(-1, -n + c / (2 * n));
+            mat.setValeurDiag(0, m0);
+            mat.setValeurDiag(1, m1);
+            mat.setValeurDiag(-1, m1);
 
             //initialisation de la partie de droite du systeme
             ArrayList<Double> tab = f.f(n + 1);
             for (int i = 0; i < n; i++) {
-                val_f[i] = (1.0 / (2 * n) ) * (tab.get(i + 1) + tab.get(i));
+                val_f[i] = (0.5 / n) * ((5 / 9) * f.apply((0.5 / n) * a1 + (0.5 * (2 * i + 1)) / n)
+                        + (8 / 9) * f.apply((0.5 / n) * a2 + (0.5 * (2 * i + 1)) / n)
+                        + (5 / 9) * f.apply((0.5 / n) * a3 + (0.5 * (2 * i + 1)) / n));
             }
-            val_f[0] += (n - c / (2 * n)) * a;
-            val_f[n - 1] += n * b;
-
+            val_f[0] += -m1 * a;
+            val_f[n - 1] += -m1 * b;
         }
-        
+        /*
+        System.out.println(mat);
+        for (int i = 0; i < n; i++) {
+            System.out.println(val_f[i]);
+        }
+        System.out.println();
+        */
+
         final Double[] res = EquationSolver3D.solve(mat, val_f);
         return new Function() {
-            public double apply(double x){ return 0.0; }
+            public double apply(double x) {
+                return 0.0;
+            }
+
             @Override
             public ArrayList<Double> f(int n1) {
-                ArrayList<Double> resu = new ArrayList<>();
+                ArrayList<Double> resu = new ArrayList<Double>();
                 resu.add(a);
                 resu.addAll(Arrays.asList(res));
                 resu.add(b);
