@@ -25,10 +25,17 @@ public class PolynomialFunction implements Function {
         this(coef, 0, 1);
     }
     
+    public double apply(double x){
+        double r=0.0;
+        for (int j = 0; j < coef.length; j++) {
+            r += coef[j] * Math.pow(x, j);
+        }
+        return r;
+    }
 
     @Override
     public ArrayList<Double> f(int n) {
-        ArrayList<Double> res = new ArrayList<>();
+        ArrayList<Double> res = new ArrayList<Double>();
         if (n < 2) {
             double r = 0.;
             double x = (a + b) / 2;
