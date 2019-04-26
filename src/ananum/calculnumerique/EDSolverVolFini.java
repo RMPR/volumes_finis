@@ -81,7 +81,7 @@ public class EDSolverVolFini extends EDSolver {
             public double apply(double x) {
                 return 0.0;
             }
-
+            public ArrayList<Double> fv(int n){ return null; }
             @Override
             public ArrayList<Double> f(int n1) {
                 ArrayList<Double> resu = new ArrayList<Double>();

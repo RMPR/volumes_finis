@@ -12,5 +12,6 @@ import java.util.ArrayList;
  */
 public interface Function {
     public ArrayList<Double> f(int n);
+    public ArrayList<Double> fv(int n);
     public double apply(double x);
 }

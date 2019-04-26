@@ -27,4 +27,8 @@ public class ConstantFunction implements Function {
         return res;
     }
     
+    public ArrayList<Double> fv(int n){
+        return f(n);
+    }
+    
 }

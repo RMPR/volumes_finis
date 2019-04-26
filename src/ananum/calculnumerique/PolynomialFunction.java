@@ -56,5 +56,29 @@ public class PolynomialFunction implements Function {
         }
         return res;
     }
+    
+    public ArrayList<Double> fv(int n){
+        ArrayList<Double> res = new ArrayList<Double>();
+        if (n < 2) {
+            double r = 0.;
+            double x = (a + b) / 2;
+            for (int j = 0; j < coef.length; j++) {
+                r += coef[j] * Math.pow(x, j);
+            }
+            res.add(r);
+            return res;
+        }
+        res.add(apply(a));
+        for (int i = 0; i < n-2; i++) {
+            double tmp = (2.*i+1)/(2. * n);
+            double r = 0.;
+            for (int j = 0; j < coef.length; j++) {
+                r += coef[j] * Math.pow(tmp, j);
+            }
+            res.add(r);
+        }
+        res.add(apply(b));
+        return res;
+    }
 
 }
