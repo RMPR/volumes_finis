@@ -7,14 +7,12 @@ package test;
 
 import ananum.calculnumerique.ConstantFunction;
 import ananum.calculnumerique.EDSolver;
-import ananum.calculnumerique.EDSolverDiffFini;
 import ananum.calculnumerique.EDSolverVolFini;
 import ananum.calculnumerique.Function;
 import ananum.calculnumerique.PolynomialFunction;
 
 import static com.mdalsoft.test.DefaultTestLogger.logTest;
 import example.test_data;
-import java.awt.BorderLayout;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +47,9 @@ public class TestLoggerVolumeFini1D {
 
             TestLoggerVolumeFini1D cas = new TestLoggerVolumeFini1D();
             boolean res = cas.test_cas_f_0_n100();
-            res = res && cas.test_cas_f_1_n200();
+            boolean res2 = cas.test_cas_f_1_n200();
+            boolean res3 = cas.test_cas_f_3_n0();
+            res = res && res2 && res3;
             parTest.put("testresult", res);
             System.out.println("Result: "+res);
         } catch (Throwable exx) {
@@ -67,7 +67,7 @@ public class TestLoggerVolumeFini1D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerVolumeFini1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -77,10 +77,11 @@ public class TestLoggerVolumeFini1D {
             EDSolver sd = new EDSolverVolFini();
             double a = 1.0;
             double b = 2.0;
-            Function f = new ConstantFunction(1);
+            Function f = new ConstantFunction(1.);
             Function RA = new PolynomialFunction(new double[]{1., 1.5, -0.5}, 0., 1.);
-            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, 0.0, a, b);
 
+            test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, 0.0, a, b);
+            
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());
             logTest(parTest, "end", false);
@@ -97,7 +98,7 @@ public class TestLoggerVolumeFini1D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerVolumeFini1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -109,6 +110,7 @@ public class TestLoggerVolumeFini1D {
             double b = 2.0;
             Function f = new ConstantFunction(0.0);
             Function RA = new PolynomialFunction(new double[]{1., 1.}, 0., 1.);
+            
             test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 0.0, a, b);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
@@ -127,7 +129,7 @@ public class TestLoggerVolumeFini1D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerDifferenceFinie1D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerVolumeFini1D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);

@@ -38,20 +38,18 @@ public class test_data {
     }
     public double mesure(Function V1, Function V2){
         // Cette methode calcule la mesure algébrique de l'érreur absolue ou relative
-        //double err = Matrice.dist(sol, g.f(201));
-        //System.out.println("===> "+ (err/Matrice.norme(g.f(201))) );
         double mes=0.0;
         double abs=0.0;
-        ArrayList<Double> v1 = V1.f(n+1);
-        ArrayList<Double> v2 = V2.f(n+1);
+        ArrayList<Double> v1 = V1.f(n);
+        ArrayList<Double> v2 = V2.f(v1.size());
         
         mes = Matrice.dist(v1, v2);
         abs = Matrice.norme(v2);
+        System.out.println(mes+" => "+abs);
+        // mes = Math.pow(mes, 0.5);
+        // abs = Math.pow(abs, 0.5);
         
-        if (abs <= tol)
-            return sqrt(mes);
-        else
-            return sqrt(mes/abs);
+        return mes/Math.max(1.0, abs);
     }
     public boolean oracle(){
         if (n<=0){
