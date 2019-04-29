@@ -1,5 +1,6 @@
-package ananum.calculnumerique;
+package ananum.calculnumerique.solvers;
 
+import ananum.calculnumerique.Function;
 import java.util.ArrayList;
 
 import static java.lang.Math.pow;

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ananum.calculnumerique;
+package ananum.calculnumerique.solvers;
 
 //import ananum.EquationSolver.EquationSolver3D;
 
+import ananum.calculnumerique.Function;
 import ananum.equation.EquationSolver;
 import ananum.matrice.Matrice3DTL;
 import ananum.solver.EquationSolver3D;

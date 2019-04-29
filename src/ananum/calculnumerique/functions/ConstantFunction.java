@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ananum.calculnumerique;
+package ananum.calculnumerique.functions;
 
+import ananum.calculnumerique.Function;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,12 @@ import java.util.ArrayList;
 public class ConstantFunction implements Function {
 
     double constant = 0.0;
+    
+    /**
+     * 
+     * @param value : la valeur de la constante a renvoyer
+     */
+    
     public ConstantFunction(double value){
         constant = value;
     }

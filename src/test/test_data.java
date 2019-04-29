@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package example;
-import ananum.calculnumerique.EDSolver;
+import ananum.calculnumerique.solvers.EDSolver;
 import ananum.calculnumerique.Function;
 import ananum.matrice.Matrice;
 import static java.lang.Math.sqrt;

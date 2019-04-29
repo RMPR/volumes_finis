@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ananum.calculnumerique;
+package ananum.calculnumerique.solvers;
 
+import ananum.calculnumerique.Function;
 import java.util.ArrayList;
 
 /**

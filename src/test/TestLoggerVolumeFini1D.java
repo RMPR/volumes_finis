@@ -5,11 +5,11 @@
  */
 package test;
 
-import ananum.calculnumerique.ConstantFunction;
-import ananum.calculnumerique.EDSolver;
-import ananum.calculnumerique.EDSolverVolFini;
+import ananum.calculnumerique.functions.ConstantFunction;
+import ananum.calculnumerique.solvers.EDSolver;
+import ananum.calculnumerique.solvers.EDSolverVolFini;
 import ananum.calculnumerique.Function;
-import ananum.calculnumerique.PolynomialFunction;
+import ananum.calculnumerique.functions.PolynomialFunction;
 
 import static com.mdalsoft.test.DefaultTestLogger.logTest;
 import example.test_data;
@@ -81,11 +81,11 @@ public class TestLoggerVolumeFini1D {
             Function RA = new PolynomialFunction(new double[]{1., 1.5, -0.5}, 0., 1.);
 
             test_data data = new test_data(sd, f, RA, "f=1 n=200", 200, 0.0, a, b);
-            
+            boolean res = data.oracle();
             parTest.put("testendtime", "" + System.currentTimeMillis());
-            parTest.put("testresult", data.oracle());
+            parTest.put("testresult", res);
             logTest(parTest, "end", false);
-            return data.oracle();
+            return res;
         } catch (Throwable exx) {
             exx.printStackTrace();
             parTest.put("testresult", false);
@@ -112,11 +112,11 @@ public class TestLoggerVolumeFini1D {
             Function RA = new PolynomialFunction(new double[]{1., 1.}, 0., 1.);
             
             test_data data = new test_data(sd, f, RA, "f=0 n=100", 100, 0.0, a, b);
-
+            boolean res = data.oracle();
             parTest.put("testendtime", "" + System.currentTimeMillis());
-            parTest.put("testresult", data.oracle());
+            parTest.put("testresult", res);
             logTest(parTest, "end", false);
-            return data.oracle();
+            return res;
         } catch (Throwable exx) {
             exx.printStackTrace();
             parTest.put("testresult", false);
@@ -142,11 +142,11 @@ public class TestLoggerVolumeFini1D {
             Function f = new ConstantFunction(3.0);
             Function RA = new PolynomialFunction(new double[]{1., 1.}, 0., 1.);
             test_data data = new test_data(sd, f, RA, "f=3 n=0", 0, 0.0, a, b);
-
+            boolean res = data.oracle();
             parTest.put("testendtime", "" + System.currentTimeMillis());
-            parTest.put("testresult", data.oracle());
+            parTest.put("testresult", res);
             logTest(parTest, "end", false);
-            return data.oracle();
+            return res;
         } catch (Throwable exx) {
             exx.printStackTrace();
             parTest.put("testresult", false);

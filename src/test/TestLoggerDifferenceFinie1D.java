@@ -5,11 +5,11 @@
  */
 package test;
 
-import ananum.calculnumerique.ConstantFunction;
-import ananum.calculnumerique.EDSolver;
-import ananum.calculnumerique.EDSolverDiffFini;
+import ananum.calculnumerique.functions.ConstantFunction;
+import ananum.calculnumerique.solvers.EDSolver;
+import ananum.calculnumerique.solvers.EDSolverDiffFini;
 import ananum.calculnumerique.Function;
-import ananum.calculnumerique.PolynomialFunction;
+import ananum.calculnumerique.functions.PolynomialFunction;
 
 import static com.mdalsoft.test.DefaultTestLogger.logTest;
 import example.test_data;

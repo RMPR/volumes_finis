@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ananum.calculnumerique;
+package ananum.calculnumerique.functions;
 
+import ananum.calculnumerique.Function;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,14 @@ public class PolynomialFunction implements Function {
 
     public double[] coef;
     public double a, b;
+    
+    /**
+     * 
+     * @param coef : tableau de coeficients { a0, a1, a2, ....., an }
+     * @param a 
+     * @param b
+     * [a, b] : domaine de définition de la fonction polynome 
+     */
 
     public PolynomialFunction(double[] coef, double a, double b) {
         this.coef = coef;
