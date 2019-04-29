@@ -70,7 +70,7 @@ public class PolynomialFunction implements Function {
         }
         res.add(apply(a));
         for (int i = 0; i < n-2; i++) {
-            double tmp = (2.*i+1)/(2. * n);
+            double tmp = (2.*i+1)/(2. * (n-2) );
             double r = 0.;
             for (int j = 0; j < coef.length; j++) {
                 r += coef[j] * Math.pow(tmp, j);
