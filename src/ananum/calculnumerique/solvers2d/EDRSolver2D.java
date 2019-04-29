@@ -14,7 +14,7 @@ import ananum.matrice.Matrice;
 public abstract class EDRSolver2D implements Solver2D {
     
     @Override
-    public Function2D solve(Function2D f, int n, int m, Matrice contour, Matrice K) {
+    public Function2D solve(Function2D f, int n, int m, Function2D contour, Matrice K) {
         return null;
     }
 }

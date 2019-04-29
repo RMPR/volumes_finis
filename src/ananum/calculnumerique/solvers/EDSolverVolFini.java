@@ -53,7 +53,7 @@ public class EDSolverVolFini extends EDSolver {
             mat.setValeurDiag(0, m00);
 
             //initialisation de la partie de droite du systeme
-            val_f[0] = 0.5 * ((5 / 9) * f.apply(0.5 * a1 + 0.5) + (8 / 9) * f.apply( 0.5) + (5 / 9) * f.apply(0.5 * a3 + 0.5))
+            val_f[0] = 0.5 * ((5 / 9) * f.value(0.5 * a1 + 0.5) + (8 / 9) * f.value( 0.5) + (5 / 9) * f.value(0.5 * a3 + 0.5))
                     - m_d * (a + b);
 
         } else {
@@ -68,9 +68,9 @@ public class EDSolverVolFini extends EDSolver {
             //initialisation de la partie de droite du systeme
             ArrayList<Double> tab = f.f(n + 1);
             for (int i = 0; i < n; i++) {
-                val_f[i] = (0.5 / n) * ((5. / 9) * f.apply((0.5 / n) * a1 + (0.5 * (2 * i + 1)) / n)
-                        + (8. / 9) * f.apply( (0.5 * (2 * i + 1)) / n)
-                        + (5. / 9) * f.apply((0.5 / n) * a3 + (0.5 * (2 * i + 1)) / n));
+                val_f[i] = (0.5 / n) * ((5. / 9) * f.value((0.5 / n) * a1 + (0.5 * (2 * i + 1)) / n)
+                        + (8. / 9) * f.value( (0.5 * (2 * i + 1)) / n)
+                        + (5. / 9) * f.value((0.5 / n) * a3 + (0.5 * (2 * i + 1)) / n));
             }
             val_f[0] += -m_d * a;
             val_f[n - 1] += -m_d * b;
@@ -85,7 +85,7 @@ public class EDSolverVolFini extends EDSolver {
 
         final Double[] res = EquationSolver.solve(mat, val_f);
         return new Function() {
-            public double apply(double x) {
+            public double value(double x) {
                 return 0.0;
             }
             public ArrayList<Double> fv(int n){ return null; }

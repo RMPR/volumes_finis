@@ -30,7 +30,7 @@ public class EDSolverDiffFini extends EDSolver{
             U.add(b);
             return new Function() {
                 public ArrayList<Double> fv(int n){ return null; }
-                public double apply(double x){ return 0.; }
+                public double value(double x){ return 0.; }
                 @Override
                 public ArrayList<Double> f(int n) {
                     return U;
@@ -86,7 +86,7 @@ public class EDSolverDiffFini extends EDSolver{
             public ArrayList<Double> f(int n) {
                 return U;
             }
-            public double apply(double x) { return 0.; }
+            public double value(double x) { return 0.; }
         };
     }
 }

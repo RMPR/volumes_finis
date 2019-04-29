@@ -24,7 +24,7 @@ public class EDRSolverDiff2D extends EDRSolver2D {
      * @return 
      */
     @Override
-    public Function2D solve(Function2D f, int n, int m, Matrice contour, Matrice K) {
+    public Function2D solve(Function2D f, int n, int m, Function2D contour, Matrice K) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -34,7 +34,7 @@ public class ConstantFunction2D implements Function2D {
     }
 
     @Override
-    public double apply(double x, double y) {
+    public double value(double x, double y) {
         return value;
     }
     

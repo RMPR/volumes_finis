@@ -5,15 +5,10 @@
  */
 package ananum.calculnumerique;
 
-import ananum.matrice.Matrice;
-
 /**
  *
  * @author nivekiba
  */
-public interface Function2D extends IFunction2D {
-    public Matrice f(int n, int m);
-    public Matrice fv(int n, int m);
-    @Override
+public interface IFunction2D {
     public double value(double x, double y);
 }

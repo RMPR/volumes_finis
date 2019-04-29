@@ -25,7 +25,7 @@ public class ConstantFunction implements Function {
         constant = value;
     }
     
-    public double apply(double x){ return constant; }
+    public double value(double x){ return constant; }
     
     @Override
     public ArrayList<Double> f(int n) {

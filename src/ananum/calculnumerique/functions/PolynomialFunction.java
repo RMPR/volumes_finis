@@ -34,7 +34,7 @@ public class PolynomialFunction implements Function {
         this(coef, 0, 1);
     }
     
-    public double apply(double x){
+    public double value(double x){
         double r=0.0;
         for (int j = 0; j < coef.length; j++) {
             r += coef[j] * Math.pow(x, j);
@@ -77,7 +77,7 @@ public class PolynomialFunction implements Function {
             res.add(r);
             return res;
         }
-        res.add(apply(a));
+        res.add(value(a));
         for (int i = 0; i < n-2; i++) {
             double tmp = (2.*i+1)/(2. * (n-2) );
             double r = 0.;
@@ -86,7 +86,7 @@ public class PolynomialFunction implements Function {
             }
             res.add(r);
         }
-        res.add(apply(b));
+        res.add(value(b));
         return res;
     }
 

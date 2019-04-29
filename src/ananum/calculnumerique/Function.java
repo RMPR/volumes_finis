@@ -10,8 +10,9 @@ import java.util.ArrayList;
 /**
  * @author Rufus
  */
-public interface Function {
+public interface Function extends IFunction{
     public ArrayList<Double> f(int n);
     public ArrayList<Double> fv(int n);
-    public double apply(double x);
+    @Override
+    public double value(double x);
 }

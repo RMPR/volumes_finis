@@ -13,6 +13,6 @@ import ananum.matrice.Matrice;
  * @author Rufus
  */
 public interface Solver2D {
-    public Function2D solve(Function2D f, int n, int m, Matrice contour, Matrice K);
+    public Function2D solve(Function2D f, int n, int m, Function2D contour, Matrice K);
 }
 

@@ -49,7 +49,7 @@ public class PolynomialFunction2D implements Function2D {
     }
 
     @Override
-    public double apply(double x, double y) {
+    public double value(double x, double y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
