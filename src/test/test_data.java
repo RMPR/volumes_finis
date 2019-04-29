@@ -41,11 +41,14 @@ public class test_data {
         double mes=0.0;
         double abs=0.0;
         ArrayList<Double> v1 = V1.f(n);
-        if(v1.size() == n+2)
+        ArrayList<Double> v2 = null;
+        if(v1.size() == n+2){
             System.out.println("Volume fini");
-        else
+            v2 = V2.fv(v1.size());
+        }else{
             System.out.println("Difference finie");
-        ArrayList<Double> v2 = V2.f(v1.size());
+            v2 = V2.f(v1.size());
+        }
         
         mes = Matrice.dist(v1, v2);
         abs = Matrice.norme(v2);
