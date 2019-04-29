@@ -5,14 +5,14 @@
  */
 package ananum.calculnumerique;
 
-import java.util.ArrayList;
+import ananum.matrice.Matrice;
 
 /**
  *
  * @author nivekiba
  */
-public interface FunctionD2 {
-    public ArrayList<Double> f(int n, int m);
-    public ArrayList<Double> fv(int n, int m);
+public interface Function2D {
+    public Matrice f(int n, int m);
+    public Matrice fv(int n, int m);
     public double apply(double x, double y);
 }

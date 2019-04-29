@@ -5,15 +5,15 @@
  */
 package ananum.calculnumerique.functions;
 
-import ananum.calculnumerique.FunctionD2;
 import ananum.matrice.Matrice;
 import java.util.ArrayList;
+import ananum.calculnumerique.Function2D;
 
 /**
  *
  * @author nivekiba
  */
-public class PolynomialFunctionD2 implements FunctionD2 {
+public class PolynomialFunction2D implements Function2D {
 
     public Matrice coef;
     public double a1, b1, a2, b2;
@@ -29,7 +29,7 @@ public class PolynomialFunctionD2 implements FunctionD2 {
      * [a2, b2] : domaine de definition de la 2eme variable
      */
 
-    public PolynomialFunctionD2(Matrice coef, double a1, double b1, double a2, double b2) {
+    public PolynomialFunction2D(Matrice coef, double a1, double b1, double a2, double b2) {
         this.coef = coef;
         this.a1 = a1;
         this.b1 = b1;
@@ -39,13 +39,13 @@ public class PolynomialFunctionD2 implements FunctionD2 {
     
     
     @Override
-    public ArrayList<Double> f(int n, int m) {
-        
+    public Matrice f(int n, int m) {
+        return null;
     }
 
     @Override
-    public ArrayList<Double> fv(int n, int m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Matrice fv(int n, int m) {
+        return null;
     }
 
     @Override

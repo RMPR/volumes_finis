@@ -5,30 +5,31 @@
  */
 package ananum.calculnumerique.functions;
 
-import ananum.calculnumerique.FunctionD2;
+import ananum.matrice.Matrice;
+import ananum.matrice.MatriceCRS;
 import java.util.ArrayList;
+import ananum.calculnumerique.Function2D;
 
 /**
  *
  * @author nivekiba
  */
-public class ConstantFunctionD2 implements FunctionD2 {
+public class ConstantFunction2D implements Function2D {
 
     public double value = 0.0;
     
-    public ConstantFunctionD2(double v){
+    public ConstantFunction2D(double v){
         value = v;
     }
     
     @Override
-    public ArrayList<Double> f(int n, int m) {
-       ArrayList<Double> res = new ArrayList<>();
-       for(int i=0; i<n*m; i++) res.add(value);
-       return res;
+    public Matrice f(int n, int m) {
+        MatriceCRS mat = new MatriceCRS(n, m);
+        return mat;
     }
 
     @Override
-    public ArrayList<Double> fv(int n, int m) {
+    public Matrice fv(int n, int m) {
         return f(n, m);
     }
 
