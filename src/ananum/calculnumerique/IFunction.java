@@ -10,5 +10,5 @@ package ananum.calculnumerique;
  * @author nivekiba
  */
 public interface IFunction {
-    public double value(double... x);
+    public double value(double x);
 }
