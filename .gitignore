@@ -1,0 +1,15 @@
+.settings
+target
+.classpath
+.project
+.vscode
+/build/
+build.xml
+manifest.mf
+nbproject/
+dv_finis.iml
+.idea
+out
+src/ananum/volumes_finis/Main.java
+src/Main.java
+*.iml
