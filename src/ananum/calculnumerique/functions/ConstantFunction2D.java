@@ -25,6 +25,11 @@ public class ConstantFunction2D implements Function2D {
     @Override
     public Matrice f(int n, int m) {
         MatriceCRS mat = new MatriceCRS(n, m);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                mat.set(i, j, value);
+            }
+        }
         return mat;
     }
 
