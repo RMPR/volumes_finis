@@ -26,15 +26,16 @@ public class Main2 {
         m.set(0, 2, 1);
         m.set(2, 0, 1);
         m.set(1, 1, 2);
-        Function2D f = new PolynomialFunction2D(m, 0, 1, 0, 1);
-        int nn = 4, mm = 6;
-        Function2D res = t.solve(new ConstantFunction2D(-4), nn, mm, f, null);
+        Function2D u = new PolynomialFunction2D(m, 0, 1, 0, 1);
+        Function2D f = new ConstantFunction2D(-4);
+        int nn = 2, mm = 4;
+        Function2D res = t.solve(f, nn, mm, u, null);
         System.out.println(res.fv(0, 0));
         ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn);
         ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm);
         for (int i = 0; i < xs.size(); i++) {
             for (int j = 0; j < ys.size(); j++) {
-                System.out.print(" "+f.value(xs.get(i), ys.get(j)));
+                System.out.print(" "+u.value(xs.get(i), ys.get(j)));
             }
             System.out.println("");
         }
