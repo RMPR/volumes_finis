@@ -26,4 +26,17 @@ public class Utilities {
         res.add(b);
         return res;
     }
+    public static ArrayList<Double> generate_diff_points(double a, double b, int n){
+        ArrayList<Double> res = new ArrayList<>();
+        if(n < 2){
+            res.add((a+b)/2);
+            return res;
+        }
+        double pas = (b - a) / (n - 1);
+        for (int i = 0; i < n; i++) {
+            double tmp = a + i * pas;
+            res.add(tmp);
+        }
+        return res;
+    }
 }
