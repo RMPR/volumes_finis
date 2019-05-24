@@ -31,8 +31,8 @@ public class Main2 {
         int nn = 2, mm = 4;
         Function2D res = t.solve(f, nn, mm, u, null);
         System.out.println(res.fv(0, 0));
-        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn);
-        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm);
+        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn+2);
+        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm+2);
         for (int i = 0; i < xs.size(); i++) {
             for (int j = 0; j < ys.size(); j++) {
                 System.out.print(" "+u.value(xs.get(i), ys.get(j)));
