@@ -8,9 +8,9 @@ package ananum.calculnumerique.solvers;
 //import ananum.EquationSolver.EquationSolver3D;
 
 import ananum.calculnumerique.Function;
-import ananum.equation.EquationSolver;
+import ananum.solver.EquationSolver;
 import ananum.matrice.Matrice3DTL;
-import ananum.solver.EquationSolver3D;
+import ananum.solver.EquationSolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;

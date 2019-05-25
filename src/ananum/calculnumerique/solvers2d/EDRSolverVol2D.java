@@ -6,7 +6,7 @@
 package ananum.calculnumerique.solvers2d;
 
 import ananum.calculnumerique.Function2D;
-import ananum.equation.EquationSolver;
+import ananum.solver.EquationSolver;
 import ananum.matrice.Matrice;
 import ananum.matrice.MatriceCRS;
 
