@@ -26,8 +26,6 @@ public class EDRSolverVol2D extends EDRSolver2D {
      * @param n
      * @param m
      * @param contour
-     * @param a
-     * @param b
      * @param K
      * @return
      */
@@ -40,7 +38,6 @@ public class EDRSolverVol2D extends EDRSolver2D {
         this.n = n;
         Double vect_f[] = calculeVecteurF(f, n, m);
         Matrice A = calculeMatrice(K, contour, n, m, vect_f);
-        //System.out.println(A);
         Double res[] = EquationSolver.solve(A, vect_f);
         Matrice B = transformeEnMatrice(res);
         return new Function2D() {
@@ -77,7 +74,7 @@ public class EDRSolverVol2D extends EDRSolver2D {
         Double vect_f[] = new Double[n * m];
         for (int j = 0; j < m; j++) {
             for (int i = 0; i < n; i++) {
-                vect_f[i + n * j] = f.fv(n, m).get(i, j) / (n * m);
+                vect_f[i + n * j] = f.value(x(i), y(j)) / (n * m);
             }
         }
         return vect_f;
@@ -171,9 +168,9 @@ public class EDRSolverVol2D extends EDRSolver2D {
             mat.set(ind, ind - n, -val0);
             mat.set(ind, ind - 1, -val1);
         } else {
-            vect_f[ind] += val0 * contour.fv(n, m).get(i, j - 1);
+            vect_f[ind] += val0 * contour.value(x(i), (j - 1));
             if (ind == 0) {
-                vect_f[ind] += val1 * contour.fv(n, m).get(i - 1, j);
+                vect_f[ind] += val1 * contour.value(x(i - 1), y(j));
             } else {
                 mat.set(ind, ind - 1, -val1);
             }
@@ -182,12 +179,32 @@ public class EDRSolverVol2D extends EDRSolver2D {
             mat.set(ind, ind + n, -val4);
             mat.set(ind, ind + 1, -val3);
         } else {
-            vect_f[ind] += val4 * contour.fv(n, m).get(i, j + 1);
+            vect_f[ind] += val4 * contour.value(x(i), y(j + 1));
             if (ind == n * m - 1) {
-                vect_f[ind] += val3 * contour.fv(n, m).get(i + 1, j);
+                vect_f[ind] += val3 * contour.value(x(i + 1), y(j));
             } else {
                 mat.set(ind, ind + 1, -val3);
             }
+        }
+    }
+
+    private double x(int i) {
+        if (i <= 0) {
+            return 0;
+        } else if (i > n) {
+            return 1;
+        } else {
+            return (2. * i - 1) / (2 * n);
+        }
+    }
+
+    private double y(int j) {
+        if (j <= 0) {
+            return 0;
+        } else if (j > m) {
+            return 1;
+        } else {
+            return (2. * j - 1) / (2 * m);
         }
     }
 }
