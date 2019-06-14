@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package example;
+package test.test1D;
 import ananum.calculnumerique.solvers.EDSolver;
 import ananum.calculnumerique.Function;
 import ananum.matrice.Matrice;
@@ -52,10 +52,10 @@ public class test_data {
         
         mes = Matrice.dist(v1, v2);
         abs = Matrice.norme(v2);
-        System.out.println(mes+" => "+abs);
         // mes = Math.pow(mes, 0.5);
         // abs = Math.pow(abs, 0.5);
-        
+        if(abs <= tol)
+            return mes;
         return mes/Math.max(1.0, abs);
     }
     public boolean oracle(){

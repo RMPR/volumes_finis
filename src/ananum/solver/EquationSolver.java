@@ -6,6 +6,8 @@
 package ananum.solver;
 
 import ananum.matrice.Matrice;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author nivekiba
@@ -27,16 +29,43 @@ public class EquationSolver {
         for (int i = 0; i < b.length; i++)
             x[i] = 0.;
         x[0] = b[0];
+        /*sThread[] th = new Thread[50];
+        for(int m=0; m < 50; m++){
+            th[m] = new Thread(){
+                @Override
+                public void run() {
+                    for(int k=0; k<100; k++)
+                        for (int i = 0; i < A.rows(); i++) {
+                            if (A.get(i, i) != 0) {
+                                double tmp = b[i];
+                                for (int j = i + 1; j < A.cols(); j++)
+                                    tmp = tmp - A.get(i, j) * x[j];
+
+                                for (int j = 0; j < i; j++)
+                                    tmp = tmp - A.get(i, j) * x[j];
+
+                                x[i] = tmp / A.get(i, i);
+                            }
+                        }
+                }
+            };
+            th[m].start();
+            try {
+                th[m].join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(EquationSolver.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } */
 
         do {
             for (int i = 0; i < A.rows(); i++) {
                 if (A.get(i, i) != 0) {
                     double tmp = b[i];
                     for (int j = i + 1; j < A.cols(); j++)
-                        tmp = tmp - A.get(i, j) * x[j];
+                        tmp = tmp - x[j] * A.get(i, j);
 
                     for (int j = 0; j < i; j++)
-                        tmp = tmp - A.get(i, j) * x[j];
+                        tmp = tmp - x[j] * A.get(i, j);
 
                     x[i] = tmp / A.get(i, i);
                 }

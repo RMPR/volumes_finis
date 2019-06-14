@@ -20,7 +20,6 @@ import javafx.util.Pair;
 public class EDRSolverDiff2D extends EDRSolver2D {
     
     /**
-     * Carole to do
      * @param f
      * @param n
      * @param a
@@ -98,8 +97,6 @@ public class EDRSolverDiff2D extends EDRSolver2D {
         }
         /*******  Fin generation ********/
         Double[] val_f = arr_val_f.toArray(new Double[arr_val_f.size()]);
-        System.out.println(mat);
-        System.out.println(arr_val_f);
         Double[] res = EquationSolver.solve(mat, val_f);
         Matrice mat_r = transformeEnMatrice(res, n-1, m-1);
         return new Function2D() {
