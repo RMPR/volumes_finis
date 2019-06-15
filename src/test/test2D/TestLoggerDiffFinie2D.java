@@ -52,7 +52,7 @@ public class TestLoggerDiffFinie2D {
             logTest(parTest, "start", false);
 
             TestLoggerDiffFinie2D cas = new TestLoggerDiffFinie2D();
-            boolean res = cas.test_cas_f_0_n15_m_150();
+            boolean res = cas.test_cas_f_0_n15_m_15();
             res = res && cas.test_cas_f_1_n_neg_m_20();
             parTest.put("testresult", res);
             System.out.println("Result: "+res);
@@ -67,7 +67,7 @@ public class TestLoggerDiffFinie2D {
 
     }
     
-    private boolean test_cas_f_0_n15_m_150() throws Exception {
+    private boolean test_cas_f_0_n15_m_15() throws Exception {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
@@ -79,14 +79,14 @@ public class TestLoggerDiffFinie2D {
         
         try{
             /* u(x,y) = x+y */
-            int n = 15, m=150;
+            int n = 15, m=15;
             EDRSolver2D sd = new EDRSolverDiff2D();
             Matrice mat = new MatriceCRS(2, 2);
             mat.set(0, 1, 1);
             mat.set(1, 0, 1);
             Function2D u = new PolynomialFunction2D(mat, 0, 1, 0, 1);
             Function2D f = new ConstantFunction2D(0);
-            test_data_2d data = new test_data_2d(sd, "f=0 n=15 m=150", f, n, m, u, null, u);
+            test_data_2d data = new test_data_2d(sd, "f=0 n=15 m=15", f, n, m, u, null, u);
 
             parTest.put("testendtime", "" + System.currentTimeMillis());
             parTest.put("testresult", data.oracle());

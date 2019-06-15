@@ -56,8 +56,9 @@ public class EquationSolver {
                 Logger.getLogger(EquationSolver.class.getName()).log(Level.SEVERE, null, ex);
             }
         } */
-
+        double err = 0.0;
         do {
+            err = 0.0;
             for (int i = 0; i < A.rows(); i++) {
                 if (A.get(i, i) != 0) {
                     double tmp = b[i];
@@ -66,12 +67,13 @@ public class EquationSolver {
 
                     for (int j = 0; j < i; j++)
                         tmp = tmp - x[j] * A.get(i, j);
-
+                    
+                    err += Math.pow(x[i]-(tmp/ A.get(i, i)), 2);
                     x[i] = tmp / A.get(i, i);
                 }
             }
-        } while (Matrice.dist(A.produit(x), b) > eps);
-
+        //} while (Matrice.dist(A.produit(x), b) > eps);
+        } while(err > eps);
         return x;
     }
 }

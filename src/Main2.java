@@ -27,8 +27,8 @@ public class Main2 {
         m.set(2, 0, 1);
         m.set(1, 1, 2);
         Function2D u = new PolynomialFunction2D(m, 0, 1, 0, 1);
-        Function2D f = new ConstantFunction2D(-4);
-        int nn = 2, mm = 3;
+        Function2D f = new ConstantFunction2D(4);
+        int nn = 3, mm = 3;
 
         Function2D res = t.solve(f, nn, mm, u, null);
         
@@ -36,8 +36,8 @@ public class Main2 {
         System.out.println(res.fv(0, 0));
         System.out.println("-----------------");
        
-        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn);
-        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm);
+        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn+2);
+        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm+2);
         System.out.println(xs);
         System.out.println(ys+"\n");
         for (int i = 0; i < xs.size(); i++) {

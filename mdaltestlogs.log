@@ -756,3 +756,9 @@
 ---;---;TestLoggerDiffFinie2D.main;1560549432029;1471;end;true;1560549433500;1560549432029;
 ---;---;TestLoggerDiffFinie2D.main;1560549513365;-1;start;---;---;1560549513365;
 ---;---;TestLoggerDiffFinie2D.test_cas_f_0_n15_m_150;1560549513370;-1;start;---;---;1560549513370;
+---;---;TestLoggerDiffFinie2D.main;1560551234791;-1;start;---;---;1560551234791;
+---;---;TestLoggerDiffFinie2D.test_cas_f_0_n15_m_15;1560551234796;-1;start;---;---;1560551234796;
+---;---;TestLoggerDiffFinie2D.test_cas_f_0_n15_m_15;1560551234796;5;end;true;1560551234801;1560551234796;
+---;---;TestLoggerDiffFinie2D.test_cas_f_1_n_neg_m_20;1560551236056;-1;start;---;---;1560551236056;
+---;---;TestLoggerDiffFinie2D.test_cas_f_1_n_neg_m_20;1560551236056;0;end;true;1560551236056;1560551236056;
+---;---;TestLoggerDiffFinie2D.main;1560551234791;1265;end;true;1560551236056;1560551234791;
