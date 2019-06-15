@@ -23,12 +23,13 @@ public class Main2 {
     public static void main(String[] args) {
         EDRSolver2D t = new EDRSolverVol2D();
         Matrice m = new MatriceCRS(3, 3);
-        m.set(0, 2, 1);
-        m.set(2, 0, 1);
-        m.set(1, 1, 2);
+        m.set(0, 0, 1);
+//        m.set(0, 2, 1);
+//        m.set(2, 0, 1);
+//        m.set(1, 1, 2);
         Function2D u = new PolynomialFunction2D(m, 0, 1, 0, 1);
         Function2D f = new ConstantFunction2D(0);
-        int nn = 2, mm = 3;
+        int nn = 3, mm = 3;
         Function2D res = t.solve(f, nn, mm, u, null);
         
         System.out.println("_________________");
