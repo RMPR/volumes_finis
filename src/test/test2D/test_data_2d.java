@@ -38,15 +38,31 @@ public class test_data_2d {
         // Cette methode calcule la mesure algébrique de l'érreur absolue ou relative
         double mes=0.0;
         double abs=0.0;
-        Matrice v1 = V1.f(n, m);
-        Matrice v2 = V2.f(n+1, m+1);
-        
-        for(int i=1; i< n; i++){
-            for(int j=1; j<m; j++){
-                mes += Math.pow(v1.get(i-1, j-1) - v2.get(i, j), 2);
-                abs += Math.pow(v2.get(i, j), 2);
+        Matrice v1;
+        try{
+            v1 = V1.f(n, m);
+        }catch(Exception e){
+            v1 = V1.fv(n+2, m+2);
+        }
+        Matrice v2;
+        if(v1.rows() == n){
+            v2 = V2.fv(n, m);
+            for(int i=0; i< n; i++){
+                for(int j=0; j<m; j++){
+                    mes += Math.pow(v1.get(i, j) - v2.get(i, j), 2);
+                    abs += Math.pow(v2.get(i, j), 2);
+                }
+            }
+        }else{
+            v2 = V2.f(n+1, m+1);
+            for(int i=1; i< n; i++){
+                for(int j=1; j<m; j++){
+                    mes += Math.pow(v1.get(i-1, j-1) - v2.get(i, j), 2);
+                    abs += Math.pow(v2.get(i, j), 2);
+                }
             }
         }
+            
         // mes = Math.pow(mes, 0.5);
         // abs = Math.pow(abs, 0.5);
         if(abs <= tol)

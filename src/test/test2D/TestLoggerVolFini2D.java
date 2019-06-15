@@ -5,16 +5,11 @@
  */
 package test.test2D;
 
-import ananum.calculnumerique.functions.ConstantFunction;
-import ananum.calculnumerique.solvers.EDSolver;
-import ananum.calculnumerique.solvers.EDSolverDiffFini;
-import ananum.calculnumerique.Function;
 import ananum.calculnumerique.Function2D;
 import ananum.calculnumerique.functions.ConstantFunction2D;
-import ananum.calculnumerique.functions.PolynomialFunction;
 import ananum.calculnumerique.functions.PolynomialFunction2D;
 import ananum.calculnumerique.solvers2d.EDRSolver2D;
-import ananum.calculnumerique.solvers2d.EDRSolverDiff2D;
+import ananum.calculnumerique.solvers2d.EDRSolverVol2D;
 import ananum.matrice.Matrice;
 import ananum.matrice.MatriceCRS;
 
@@ -26,7 +21,7 @@ import java.util.Map;
  *
  * @author User
  */
-public class TestLoggerDiffFinie2D {
+public class TestLoggerVolFini2D {
 
     String sep = "\\";
     String testFileLogger = "com.mdalsoft.test.FileTestLogger";
@@ -42,7 +37,7 @@ public class TestLoggerDiffFinie2D {
 
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
-        String methodToTest = "TestLoggerDiffFinie2D.main";
+        String methodToTest = "TestLoggerVolFini2D.main";
         String testFileLogger = "com.mdalsoft.test.FileTestLogger";
         try {
             parTest.put("class_to_test", classeATester);
@@ -51,10 +46,9 @@ public class TestLoggerDiffFinie2D {
             parTest.put("testLogger0", testFileLogger);
             logTest(parTest, "start", false);
 
-            TestLoggerDiffFinie2D cas = new TestLoggerDiffFinie2D();
-            boolean res1 = cas.test_cas_f_0_n20_m_20();
-            boolean res2 = cas.test_cas_f_1_n_neg_m_20();
-            boolean res = res1 && res2;
+            TestLoggerVolFini2D cas = new TestLoggerVolFini2D();
+            boolean res = cas.test_cas_f_0_n15_m_15();
+            res = res && cas.test_cas_f_1_n_neg_m_20();
             parTest.put("testresult", res);
             System.out.println("Result: "+res);
         } catch (Throwable exx) {
@@ -68,11 +62,11 @@ public class TestLoggerDiffFinie2D {
 
     }
     
-    private boolean test_cas_f_0_n20_m_20() throws Exception {
+    private boolean test_cas_f_0_n15_m_15() throws Exception {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerDiffFinie2D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerVolFini2D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -80,9 +74,9 @@ public class TestLoggerDiffFinie2D {
         
         try{
             /* u(x,y) = x+y */
-            int n = 20, m=20;
-            EDRSolver2D sd = new EDRSolverDiff2D();
-            Matrice mat = new MatriceCRS(2, 2);
+            int n = 15, m=15;
+            EDRSolver2D sd = new EDRSolverVol2D();
+            Matrice mat = new MatriceCRS(3, 3);
             mat.set(0, 1, 1);
             mat.set(1, 0, 1);
             Function2D u = new PolynomialFunction2D(mat, 0, 1, 0, 1);
@@ -105,7 +99,7 @@ public class TestLoggerDiffFinie2D {
         long startTime = System.currentTimeMillis();
         Map parTest = new HashMap();
         parTest.put("teststarttime", "" + startTime);
-        parTest.put("testreference", "TestLoggerDiffFinie2D."+new Throwable() 
+        parTest.put("testreference", "TestLoggerVolFini2D."+new Throwable() 
                                       .getStackTrace()[0] 
                                       .getMethodName());
         parTest.put("testLogger0", testFileLogger);
@@ -114,7 +108,7 @@ public class TestLoggerDiffFinie2D {
         try{
             /* u(x,y) = x+xy+3x^2 */
             int n=-1, m=10;
-            EDRSolver2D sd = new EDRSolverDiff2D();
+            EDRSolver2D sd = new EDRSolverVol2D();
             Matrice mat = new MatriceCRS(3, 3);
             mat.set(0, 1, 1);
             mat.set(1, 1, 1);

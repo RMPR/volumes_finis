@@ -20,7 +20,7 @@ public class test_data {
     private int n;
     public String scenario;
     Function fonctionATester;
-    double tol=10e-7;
+    double tol=10e-6;
     private double a;
     private double b;
     private double c;

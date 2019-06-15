@@ -36,9 +36,11 @@ public class EDRSolverVol2D extends EDRSolver2D {
         }
         this.m = m;
         this.n = n;
+
         Double vect_f[] = calculeVecteurF(f, n, m);
         Matrice A = calculeMatrice(K, contour, n, m, vect_f);
         Double res[] = EquationSolver.solve(A, vect_f);
+        
         Matrice B = transformeEnMatrice(res);
         return new Function2D() {
             @Override
@@ -60,7 +62,6 @@ public class EDRSolverVol2D extends EDRSolver2D {
 
     private Matrice calculeMatrice(Matrice K, Function2D contour, int n, int m, Double vect_f[]) {
         Matrice mat = new MatriceCRS(n * m, n * m);
-        int ind = -1;
         for (int j = 1; j <= m; j++) {
             for (int i = 1; i <= n; i++) {
                 editeLigne(i, j, mat, vect_f, contour);
@@ -91,7 +92,7 @@ public class EDRSolverVol2D extends EDRSolver2D {
     }
 
     private int indice(int i, int j) {
-        return i - 1 + n * (j - 1);
+        return (i - 1) + (n * (j - 1));
     }
 
     private double k22(int i, int j) {
@@ -164,17 +165,42 @@ public class EDRSolverVol2D extends EDRSolver2D {
         //modifie la valeur de la diagonale
         mat.set(ind, ind, val0 + val1 + val3 + val4);
 
+        if (j <= 1) {
+            vect_f[ind] += val0 * contour.value(x(i), y(j - 1));
+        } else {
+            mat.set(ind, ind - n, -val0);
+        }
+        if (j >= m) {
+            vect_f[ind] += val4 * contour.value(x(i), y(j + 1));
+        } else {
+            mat.set(ind, ind + n, -val4);
+        }
+
+        if (i <= 1) {
+            vect_f[ind] += val1 * contour.value(x(i - 1), y(j));
+        } else {
+            mat.set(ind, ind - 1, -val1);
+        }
+        if (i >= n) {
+            vect_f[ind] += val3 * contour.value(x(i + 1), y(j));
+        } else {
+            mat.set(ind, ind + 1, -val3);
+        }
+        ///
+        /*
         if (ind - n >= 0) {
             mat.set(ind, ind - n, -val0);
             mat.set(ind, ind - 1, -val1);
         } else {
-            vect_f[ind] += val0 * contour.value(x(i), (j - 1));
+            vect_f[ind] += val0 * contour.value(x(i), y(j - 1));
             if (ind == 0) {
                 vect_f[ind] += val1 * contour.value(x(i - 1), y(j));
             } else {
                 mat.set(ind, ind - 1, -val1);
             }
         }
+         */
+ /*
         if (ind + n < n * m) {
             mat.set(ind, ind + n, -val4);
             mat.set(ind, ind + 1, -val3);
@@ -186,6 +212,7 @@ public class EDRSolverVol2D extends EDRSolver2D {
                 mat.set(ind, ind + 1, -val3);
             }
         }
+         */
     }
 
     private double x(int i) {

@@ -23,34 +23,26 @@ public class Main2 {
     public static void main(String[] args) {
         EDRSolver2D t = new EDRSolverVol2D();
         Matrice m = new MatriceCRS(3, 3);
-        m.set(0, 0, 1);
-//        m.set(0, 2, 1);
-//        m.set(2, 0, 1);
-//        m.set(1, 1, 2);
+        m.set(0, 2, 1);
+        m.set(2, 0, 1);
+        m.set(1, 1, 2);
         Function2D u = new PolynomialFunction2D(m, 0, 1, 0, 1);
-<<<<<<< HEAD
-        Function2D f = new ConstantFunction2D(4);
-        int nn = 3, mm = 3;
-
-=======
-        Function2D f = new ConstantFunction2D(0);
-        int nn = 3, mm = 3;
->>>>>>> 9f273dea80fc5c9c54316e2005d4dfde6d69960b
+        Function2D f = new ConstantFunction2D(-4);
+        int nn = 20, mm = 120;
         Function2D res = t.solve(f, nn, mm, u, null);
         
         System.out.println("_________________");
         System.out.println(res.fv(0, 0));
         System.out.println("-----------------");
        
-        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn+2);
-        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm+2);
-        System.out.println(xs);
-        System.out.println(ys+"\n");
+        ArrayList<Double> xs = Utilities.generate_volume_points(0, 1, nn);
+        ArrayList<Double> ys = Utilities.generate_volume_points(0, 1, mm);
+        double r = 0.0;
         for (int i = 0; i < xs.size(); i++) {
             for (int j = 0; j < ys.size(); j++) {
-                System.out.print(" "+u.value(xs.get(i), ys.get(j)));
+                r += Math.pow(u.value(xs.get(i), ys.get(j))-res.fv(0, 0).get(i, j), 2); 
             }
-            System.out.println("");
         }
+        System.out.println(r);
     }
 }
